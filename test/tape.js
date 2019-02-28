@@ -17,8 +17,6 @@ test('things', function (t) {
   }, 1000)
 })
 
-test('eslint', require('eslint-engine/tape')())
-
 function spawnTest (args, fn) {
   var proc = spawn('./bin/tape-watch', args)
   var output = { stdout: '', stderr: '', code: undefined }
