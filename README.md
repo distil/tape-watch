@@ -2,22 +2,13 @@
 
 > Rerun tape tests when files change
 
-tape-watch is an auto-test runner for [tape]. It will re-run your tests when any of the files in your project changes. This is better than using [watch][] or [nodemon][]: it will reload your tests in the same Node.js process, saving you precious startup time.
-
-[![Status](https://travis-ci.org/rstacruz/tape-watch.svg?branch=master)](https://travis-ci.org/rstacruz/tape-watch "See test builds")
-
-[nodemon]: https://www.npmjs.com/package/nodemon
-[watch]: https://www.npmjs.com/package/watch
+tape-watch is an auto-test runner for [tape]. It will re-run your tests when any of the files in your project changes.
 
 ## Usage
 
-Can happily live in your project (`--save-dev`) or globally (`-g`). I prefer global, since it's compatible with every project with [tape][] in it.
-
 ```
-npm install -g tape-watch
+npm install --save-dev tape-watch
 ```
-
-[tape]: https://github.com/substack/tape
 
 ## Reference
 
@@ -54,41 +45,42 @@ tape-watch 'test/**/*.js'
 
 ## Using with Babel
 
-Use the `-r` *(--require)* flag with [babel-register](https://www.npmjs.com/package/babel-register).
+Use the `-r` *(--require)* flag with [@babel/register](https://www.npmjs.com/package/@babel/register).
 
 ```sh
-tape-watch -r babel-register
+tape-watch -r @babel/register
 ```
 
 Before you do this, of course, you'll need to install the requisite modules first.
 
 ```sh
-npm install --save-dev babel-register babel-preset-es2015
+npm install --save-dev @babel/core @babel/register @babel/preset-env
+```
+
+```js
+/* .babelrc */
+{
+  "presets": [
+    [
+      "@babel/preset-env"
+    ],
+  ]
+}
 ```
 
 ```js
 /* package.json */
-  "babel": {
-    "presets": ["es2015"]
-  }
-```
-
-## Adding `npm test`
-
-Add this to your `package.json`:
-
-```js
+  ...
+  "browserslist": [
+    "maintained node versions"
+  ],
   "scripts": {
     "test": "tape-watch -1 test/*"
   }
+  ...
 ```
 
 You can now run tests with `npm test`, or make it auto-run with `npm test -- --watch`.
-
-## Also see
-
-- [tape-growl](https://www.npmjs.com/package/tape-growl) for notifications on macOS
-- [tape-plus](https://www.npmjs.com/package/tape-plus) for grouping tape tests
 
 ## Thanks
 
