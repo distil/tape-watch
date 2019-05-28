@@ -22,7 +22,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "7.4.4",
-    "tape": "4.10.1"
+    "tape": "4.10.2"
   },
   "homepage": "https://github.com/rstacruz/tape-watch#readme",
   "keywords": [
